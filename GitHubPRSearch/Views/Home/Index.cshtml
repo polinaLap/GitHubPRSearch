@@ -5,18 +5,32 @@
 
 <h2>GitHub PR Search</h2>
 
-<form method="post" asp-controller="Home" asp-action="Search">
+<form method="post" asp-controller="Home" asp-action="Search" onsubmit="return validateForm()">
     <label for="owner">Repository Owner:</label>
     <input type="text" asp-for="RepositoryOwner" id="owner"><br>
 
     <label for="repository">Repository Name:</label>
-    <input type="text" asp-for="RepositoryName" id="owner"><br>
+    <input type="text" asp-for="RepositoryName" id="name"><br>
 
     <label for="tag">PR Tag:</label>
-    <input type="text" asp-for="PrLabel" id="owner"><br>
+    <input type="text" asp-for="PrLabel" id="tag"><br>
 
     <label for="keywords">Custom Search Words:</label>
-    <input type="text" asp-for="Keywords" id="owner"><br>
+    <input type="text" asp-for="Keywords" id="keywords"><br>
 
     <button type="submit">Search</button>
 </form>
+
+<script>
+    function validateForm() {
+        var owner = document.getElementById("owner").value;
+        var name = document.getElementById("name").value;
+
+        if (owner.trim() === '' || name.trim() === '') {
+            alert("Repository Owner and Repository Name cannot be empty.");
+            return false;
+        }
+
+        return true;
+    }
+</script>
