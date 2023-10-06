@@ -37,14 +37,14 @@ This task should be able to complete with anonymous requests to Github.
 
 ## How to launch?
 1. Pull repository files
-2. Run the application in IDE or with `dotnet run` command in *GitHubPRSearch* folder
+2. Run the application in IDE or with `dotnet run` command in the *GitHubPRSearch* folder
 3. Open http://localhost:5153/ in the browser
-4. Fill the form and click Search.
+4. Fill out the form and click Search.
 
 Example of search input:
 
-- Repository Owner:dotnet
-- Repository Name: runtime
-- PR Tag: area-Infrastructure-mono
-- Custom Search Words: enable
+- Repository Owner: `dotnet` (mandatory field)
+- Repository Name: `runtime` (mandatory field)
+- PR Tag: `area-Infrastructure-mono`
+- Custom Search Words: `enable`
 
