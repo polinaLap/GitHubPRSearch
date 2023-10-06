@@ -4,7 +4,9 @@ using GitHubPRSearch.Services;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews(
+    options => options.Filters.Add<ApiExceptionFilter>()
+);
 
 builder.Services.AddHttpClient<IGitHubApiClient, GitHubApiClient>(client =>
 {

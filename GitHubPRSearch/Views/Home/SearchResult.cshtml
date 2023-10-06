@@ -1,35 +1,51 @@
 ﻿@model SearchResultModel
 
 <h2>Search Results</h2>
-
-Average amount of days : @Model.AvarageDaysAmount.
-
-@foreach (var group in Model.Groups)
+@if (Model.TotalPRCount > 0)
 {
-    <p><h3>@group.Key:</h3></p>
-    <p>Average amount of days : @group.Value.AvarageDaysAmount</p>
-    @foreach (var pr in group.Value.PullRequests)
+    <p>Total PR count: @Model.TotalPRCount.</p>
+    <p>Average amount of days PRs are open: @Model.AvarageDaysAmount.</p>
+
+    @foreach (var group in Model.Groups)
     {
-        <ul>
-            <li>
-                <a href="@pr.Uri">@pr.Title</a><br />
-                @pr.Description<br />
-                Comments: @pr.CommentsAmmount<br />
-                Created: @pr.CreationDate<br />
-                Creator: @pr.Creator.Login <img src="@pr.Creator.AvatarUrl" style="max-width: 20px; max-height: 20px;"><br />
-                Commits:<br />
-                <ul>
-        @foreach (var commit in pr.Commits)
+        if (group.Value.PullRequests.Count > 0)
         {
-                <li>
-                            @commit.Hash<br />
-                            Message: @commit.Message<br />
-                            Date: @commit.Date<br />
-                            Author:@commit.Author.Login <img src="@commit.Author.AvatarUrl" style="max-width: 20px; max-height: 20px;"><br />
-            </li>
-                    }            
-        </ul>
-        </li>
-        </ul>
+            <p><h3>@group.Key:</h3></p>
+            <p>Average amount of days PRs are open: @group.Value.AvarageDaysAmount</p>
+            @foreach (var pr in group.Value.PullRequests)
+            {
+                <ul>
+                    <li>
+                        <a href="@pr.Uri">@pr.Title</a><br />
+                        @pr.Description<br />
+                        Comments: @pr.CommentsAmmount<br />
+                        Created: @pr.CreationDate<br />
+
+                        @if (pr.StaleFor != null)
+                        {
+                            <div>Stale for: @pr.StaleFor.Value</div>
+                        }
+                        Creator: @pr.Creator.Login <img src="@pr.Creator.AvatarUrl" style="max-width: 20px; max-height: 20px;"><br />
+                        Commits:<br />
+                        <ul>
+                            @foreach (var commit in pr.Commits)
+                            {
+                                <li>
+                                    @commit.Hash<br />
+                                    Message: @commit.Message<br />
+                                    Date: @commit.Date<br />
+                                    Author:@commit.Author.Login <img src="@commit.Author.AvatarUrl" style="max-width: 20px; max-height: 20px;"><br />
+                                </li>
+                            }            
+                        </ul>
+                    </li>
+                </ul>
+            }
+
+        }
     }
+}
+else
+{
+    <p>No results by this input.</p>
 }

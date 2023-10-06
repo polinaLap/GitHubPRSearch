@@ -1,5 +1,7 @@
 ﻿using GitHubPRSearch.Clients.Models;
 using GitHubPRSearch.Models;
+using Microsoft.AspNetCore.Mvc.Filters;
+using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
 namespace GitHubPRSearch.Clients
@@ -68,5 +70,16 @@ namespace GitHubPRSearch.Clients
     {
         public ApiException(string message, Exception innerException = null) : base(message, innerException) { }
     }
-    public record Pagination(int Count, int Page);
+
+    public class ApiExceptionFilter : IExceptionFilter
+    {
+        public void OnException(ExceptionContext context)
+        {
+            if (context.Exception is ApiException)
+            {
+                context.Result = new RedirectResult("~/Home/Error");
+                context.ExceptionHandled = true;
+            }
+        }
+    }
 }

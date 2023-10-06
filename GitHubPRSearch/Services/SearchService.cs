@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using GitHubPRSearch.Clients;
-using GitHubPRSearch.Clients.Models;
 using GitHubPRSearch.Models;
 
 namespace GitHubPRSearch.Services
@@ -34,6 +33,7 @@ namespace GitHubPRSearch.Services
         {
             var result = new SearchResultModel
             {
+                TotalPRCount = pullRequests.Count,
                 Groups = new Dictionary<string, PullRequestGroupModel>
             {
                 { ActiveGroup, new PullRequestGroupModel() },
@@ -60,6 +60,7 @@ namespace GitHubPRSearch.Services
                 else if (daysOld > 30)
                 {
                     staleDays += daysOld;
+                    pullRequest.StaleFor = daysOld - 30;
                     result.Groups[StaleGroup].PullRequests.Add(pullRequest);
                 }
                 else
