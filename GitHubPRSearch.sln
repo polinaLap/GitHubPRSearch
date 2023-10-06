@@ -5,6 +5,8 @@ VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GitHubPRSearch", "GitHubPRSearch\GitHubPRSearch.csproj", "{727BE6B9-71DC-428F-BC92-DFD48EBB89A6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GitHubPRSearchTests", "GitHubPRSearchTests\GitHubPRSearchTests.csproj", "{1857AD26-A6B6-42F0-8C48-0E3D140E41DF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{727BE6B9-71DC-428F-BC92-DFD48EBB89A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{727BE6B9-71DC-428F-BC92-DFD48EBB89A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{727BE6B9-71DC-428F-BC92-DFD48EBB89A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1857AD26-A6B6-42F0-8C48-0E3D140E41DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1857AD26-A6B6-42F0-8C48-0E3D140E41DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1857AD26-A6B6-42F0-8C48-0E3D140E41DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1857AD26-A6B6-42F0-8C48-0E3D140E41DF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
