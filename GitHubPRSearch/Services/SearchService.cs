@@ -82,7 +82,7 @@ namespace GitHubPRSearch.Services
             return result;
         }
 
-        private void UpdateAverageDaysForGroup(PullRequestGroupModel group, int days)
+        private static void UpdateAverageDaysForGroup(PullRequestGroupModel group, int days)
         {
             if (group.PullRequests.Count > 0)
             {

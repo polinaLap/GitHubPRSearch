@@ -1,7 +1,6 @@
 ﻿using GitHubPRSearch.Clients.Models;
+using GitHubPRSearch.Infrastracture;
 using GitHubPRSearch.Models;
-using Microsoft.AspNetCore.Mvc.Filters;
-using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
 namespace GitHubPRSearch.Clients
@@ -63,23 +62,6 @@ namespace GitHubPRSearch.Clients
             var json = await response.Content.ReadAsStringAsync();
 
             return JsonConvert.DeserializeObject<SearchResult>(json);
-        }
-    }
-
-    public class ApiException : Exception
-    {
-        public ApiException(string message, Exception innerException = null) : base(message, innerException) { }
-    }
-
-    public class ApiExceptionFilter : IExceptionFilter
-    {
-        public void OnException(ExceptionContext context)
-        {
-            if (context.Exception is ApiException)
-            {
-                context.Result = new RedirectResult("~/Home/Error");
-                context.ExceptionHandled = true;
-            }
         }
     }
 }

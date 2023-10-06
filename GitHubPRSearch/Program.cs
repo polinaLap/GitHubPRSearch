@@ -1,4 +1,5 @@
 using GitHubPRSearch.Clients;
+using GitHubPRSearch.Infrastracture;
 using GitHubPRSearch.Services;
 
 var builder = WebApplication.CreateBuilder(args);
