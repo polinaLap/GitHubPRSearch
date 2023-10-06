@@ -3,7 +3,7 @@
 namespace GitHubPRSearch.Clients.Models
 {
 
-    public class SearchResponse
+    public class SearchResult
     {
         [JsonProperty("total_count")]
         public int TotalCount { get; set; }

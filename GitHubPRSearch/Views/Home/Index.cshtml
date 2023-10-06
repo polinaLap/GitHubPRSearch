@@ -1,8 +1,21 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "GitHub PR Search";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<h2>GitHub PR Search</h2>
+
+<form method="post" asp-controller="Home" asp-action="Search">
+    <label for="owner">Repository Owner:</label>
+    <input type="text" id="owner" name="owner"><br>
+
+    <label for="repository">Repository Name:</label>
+    <input type="text" id="repository" name="repository"><br>
+
+    <label for="tag">PR Tag:</label>
+    <input type="text" id="tag" name="tag"><br>
+
+    <label for="keywords">Custom Search Words:</label>
+    <input type="text" id="keywords" name="keywords"><br>
+
+    <button type="submit">Search</button>
+</form>

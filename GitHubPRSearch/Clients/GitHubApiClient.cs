@@ -12,7 +12,7 @@ namespace GitHubPRSearch.Clients
             _httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
         }
 
-        public async Task<SearchResponse> SearchPullRequests(SearchRequest request, Pagination pagination)
+        public async Task<SearchResult> SearchPullRequests(SearchRequest request, Pagination pagination)
         {
             try
             {
@@ -27,7 +27,7 @@ namespace GitHubPRSearch.Clients
             }
         }
 
-        private async Task GetCommits(SearchRequest request, SearchResponse searchResponse)
+        private async Task GetCommits(SearchRequest request, SearchResult searchResponse)
         {
             var prUri = $"repos/{request.RepositoryOwner}/{request.RepositoryName}/pulls";
 
@@ -45,7 +45,7 @@ namespace GitHubPRSearch.Clients
             }
         }
 
-        private async Task<SearchResponse> SearchPullRequestsImpl(SearchRequest request, Pagination pagination)
+        private async Task<SearchResult> SearchPullRequestsImpl(SearchRequest request, Pagination pagination)
         {
             string searchUri = $"search/issues?q={request.Keywords}+repo:{request.RepositoryOwner}/{request.RepositoryName}" +
                     $"+is:pr+label:{request.PrLabel}+state:open" +
@@ -59,7 +59,7 @@ namespace GitHubPRSearch.Clients
             }
             var json = await response.Content.ReadAsStringAsync();
 
-            return JsonConvert.DeserializeObject<SearchResponse>(json);
+            return JsonConvert.DeserializeObject<SearchResult>(json);
         }
     }
 

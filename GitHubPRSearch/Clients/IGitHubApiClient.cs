@@ -4,6 +4,6 @@ namespace GitHubPRSearch.Clients
 {
     public interface IGitHubApiClient
     {
-        Task<SearchResponse> SearchPullRequests(SearchRequest request, Pagination pagination);
+        Task<SearchResult> SearchPullRequests(SearchRequest request, Pagination pagination);
     }
 }
