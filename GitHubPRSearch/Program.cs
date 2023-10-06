@@ -1,4 +1,5 @@
 using GitHubPRSearch.Clients;
+using GitHubPRSearch.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +12,8 @@ builder.Services.AddHttpClient<IGitHubApiClient, GitHubApiClient>(client =>
     client.DefaultRequestHeaders.Add("Accept", "application/vnd.github.v3+json");
     client.DefaultRequestHeaders.Add("User-Agent", "GitNubPRSearch");
 });
+builder.Services.AddScoped<ISearchService, SearchService>();
+builder.Services.AddAutoMapper(typeof(Program));
 
 var app = builder.Build();
 

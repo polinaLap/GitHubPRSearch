@@ -6,9 +6,9 @@ Average amount of days : @Model.AvarageDaysAmount.
 
 @foreach (var group in Model.Groups)
 {
-    <p><h3>@group.GroupName:</h3></p>
-    <p>Average amount of days : @group.AvarageDaysAmount.</p>
-    @foreach (var pr in group.PullRequests)
+    <p><h3>@group.Key:</h3></p>
+    <p>Average amount of days : @group.Value.AvarageDaysAmount</p>
+    @foreach (var pr in group.Value.PullRequests)
     {
         <ul>
             <li>
@@ -16,7 +16,7 @@ Average amount of days : @Model.AvarageDaysAmount.
                 @pr.Description<br />
                 Comments: @pr.CommentsAmmount<br />
                 Created: @pr.CreationDate<br />
-                Creator: @pr.Creator.Login <img src="@pr.Creator.AvatarLink" style="max-width: 20px; max-height: 20px;"><br />
+                Creator: @pr.Creator.Login <img src="@pr.Creator.AvatarUrl" style="max-width: 20px; max-height: 20px;"><br />
                 Commits:<br />
                 <ul>
         @foreach (var commit in pr.Commits)
@@ -25,7 +25,7 @@ Average amount of days : @Model.AvarageDaysAmount.
                             @commit.Hash<br />
                             Message: @commit.Message<br />
                             Date: @commit.Date<br />
-                            Author:@commit.Author.Login <img src="@commit.Author.AvatarLink" style="max-width: 20px; max-height: 20px;"><br />
+                            Author:@commit.Author.Login <img src="@commit.Author.AvatarUrl" style="max-width: 20px; max-height: 20px;"><br />
             </li>
                     }            
         </ul>

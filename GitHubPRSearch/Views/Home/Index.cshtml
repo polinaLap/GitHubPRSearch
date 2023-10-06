@@ -1,21 +1,22 @@
 ﻿@{
     ViewData["Title"] = "GitHub PR Search";
 }
+@model SearchRequest
 
 <h2>GitHub PR Search</h2>
 
 <form method="post" asp-controller="Home" asp-action="Search">
     <label for="owner">Repository Owner:</label>
-    <input type="text" id="owner" name="owner"><br>
+    <input type="text" asp-for="RepositoryOwner" id="owner"><br>
 
     <label for="repository">Repository Name:</label>
-    <input type="text" id="repository" name="repository"><br>
+    <input type="text" asp-for="RepositoryName" id="owner"><br>
 
     <label for="tag">PR Tag:</label>
-    <input type="text" id="tag" name="tag"><br>
+    <input type="text" asp-for="PrLabel" id="owner"><br>
 
     <label for="keywords">Custom Search Words:</label>
-    <input type="text" id="keywords" name="keywords"><br>
+    <input type="text" asp-for="Keywords" id="owner"><br>
 
     <button type="submit">Search</button>
 </form>
